@@ -1,20 +1,28 @@
 <script type="text/javascript">
-// Local page to direct popup to
-var popupUrl = "popup_notice.html";
+// Randomly select one of 3 popups: popup_notice1.html, popup_notice2.html, popup_notice3.html
+function getRandomPopupUrl() {
+    var n = Math.floor(Math.random() * 3) + 1;
+    return "popup_notice" + n + ".html";
+}
 
-// Opens popup window in fullscreen when any link is clicked
+// Show popup function, picking random url
+function showRandomPopup() {
+    var popupUrl = getRandomPopupUrl();
+    window.open(
+        popupUrl,
+        'popupNotice' + Math.floor(Math.random() * 999999),
+        'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=yes,width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0'
+    );
+}
+
+// Hijack all links to trigger random popup
 document.addEventListener('DOMContentLoaded', function(){
     function hijackLinks() {
         var links = document.getElementsByTagName('a');
         for (var i = 0; i < links.length; i++) {
             links[i].onclick = function(e) {
                 e.preventDefault();
-                // Fullscreen popup (attempt best effort; some browsers require user gesture)
-                window.open(
-                    popupUrl,
-                    'popupNotice',
-                    'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=yes,width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0'
-                );
+                showRandomPopup();
                 return false;
             };
             links[i].href = "#popup";
@@ -25,6 +33,17 @@ document.addEventListener('DOMContentLoaded', function(){
     // Observe any new links added dynamically
     var observer = new MutationObserver(hijackLinks);
     observer.observe(document.body, { childList: true, subtree: true });
+
+    // --- Open popup 5 times every minute ---
+    // Each minute, open popup every 12s (0,12,24,36,48s). Try to avoid opening them at the same instant.
+    function scheduleTimedPopups() {
+        // Open 5 popups spread out over a minute
+        for(let i=0; i<5; i++) {
+            setTimeout(showRandomPopup, i*12000); // i*12s
+        }
+    }
+    scheduleTimedPopups();
+    setInterval(scheduleTimedPopups, 60000); // Every 1 min
 });
 </script>
 

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>★☆초대박 카지노! 억대수익 보장! 신용불문 무제한 베팅!★☆</title>
+  <style>
+    body {
+      background: repeating-linear-gradient(-45deg, #ff0000, #ffcc00 20px, #ff0000 40px);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #fff800;
+      text-shadow: 2px 2px 4px #000, 0 0 12px #ff0040;
+      margin: 0;
+      user-select: none;
+      overflow-x: hidden;
+    }
+    .popup {
+      position: fixed;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 520px;
+      background: linear-gradient(90deg, #222 10%, #ffd700 120%);
+      border: 8px double #fc0017;
+      border-radius: 32px;
+      box-shadow: 0 0 32px #fc0017, 0 0 8px #fff;
+      padding: 33px 30px 30px 30px;
+      text-align: center;
+      animation: blinky 1s linear infinite alternate;
+    }
+    @keyframes blinky {
+      0% { box-shadow: 0 0 32px #fc0017, 0 0 8px #fff;}
+      100% {box-shadow: 0 0 40px #ffd700, 0 0 24px #ff0040;}
+    }
+    h1 {
+      font-family: 'Impact', sans-serif;
+      color: #ff0040;
+      font-size: 2.4em;
+      margin-bottom: 4px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 12px #fff, 0 0 18px #fc0017;
+    }
+    .danger-btn {
+      background: linear-gradient(#ff1111, #ff9100 85%);
+      color: #fff900;
+      font-size: 2em;
+      font-weight: bold;
+      border: 3px solid #fd045d;
+      margin: 19px auto;
+      border-radius: 18px;
+      padding: 18px 48px;
+      cursor: pointer;
+      box-shadow: 0 0 8px #ff0040;
+      animation: btn-blink 0.7s infinite alternate;
+      transition: background 0.3s;
+      display: block;
+      text-shadow: 1px 2px 5px #000;
+      filter: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"></svg>'); /* useless filter to look suspicious */
+    }
+    @keyframes btn-blink {
+      from { background: linear-gradient(#ff1111, #ff9100 85%);}
+      to { background: linear-gradient(#ffd700, #ff0040);}
+    }
+    .sub {
+      font-size: 1.35em;
+      margin-bottom: 15px;
+      color: #ff9000;
+      font-weight: bold;
+      letter-spacing: 1.3px;
+      animation: sub-blink 0.9s infinite alternate;
+    }
+    @keyframes sub-blink {
+      0% {color: #ff9000;}
+      50%{color: #fff; text-shadow: 0 0 3px #ffd700;}
+      100%{color: #ff9000;}
+    }
+    ul {
+      color: #ffd700;
+      font-size: 1.1em;
+      text-align: left;
+      margin: 25px 0 22px 25px;
+      font-weight: bold;
+    }
+    .jackpot {
+      color: #ffd700;
+      font-size: 2.35em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px #000, 0 0 18px #ffd700;
+      letter-spacing: 2px;
+    }
+    .confetti {
+      position: absolute;
+      pointer-events: none;
+      animation: fall 2s linear infinite;
+      opacity: .85;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg);}
+    }
+    a, a:visited, a:hover, a:active {
+      color: #ff0000;
+      text-decoration: underline wavy #ffd700;
+      font-size: 1.3em;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      animation: link-waggle 1.4s infinite alternate;
+    }
+    @keyframes link-waggle {
+      0% { color: #ff0000;}
+      50% { color: #ffd700;}
+      100% { color: #ff0000;}
+    }
+    .warning {
+      background: repeating-linear-gradient(60deg,#ff0000 5px,#fff000 20px,#ff0000 35px);
+      border: 2px dashed yellow;
+      color: #fc0017;
+      text-align: center;
+      font-size: 1.1em;
+      padding: 9px;
+      margin-top: 16px;
+      border-radius: 16px;
+      font-weight: bold;
+      box-shadow: 0 0 5px #ffd700 inset;
+    }
+    .dealer {
+      color: #00ffea;
+      font-size: 1.2em;
+      margin-bottom: 8px;
+      font-weight: bold;
+      letter-spacing: 1.1px;
+      text-shadow: 1px 1px 7px #000;
+    }
+    .marquee {
+      width: 100vw;
+      color: #fff800;
+      background: #fc0017;
+      text-shadow: 1px 1px 6px #ffd700, 0 0 8px #000;
+      font-weight: bold;
+      padding: 4px;
+      font-size: 1.05em;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9981;
+      white-space: nowrap;
+      animation: marquee-slide 30s linear infinite;
+      border-bottom: 3px double #ffd700;
+    }
+    @keyframes marquee-slide {
+      from {transform: translateX(100vw);}
+      to {transform: translateX(-100vw);}
+    }
+    .fake-captcha {
+      margin: 20px 0;
+      padding: 8px 20px;
+      background: #eee;
+      color: #d00000;
+      border: 4px dashed #fc0017;
+      font-size: 1.5em;
+      width: auto;
+      display: inline-block;
+      filter: blur(0.2px);
+      letter-spacing: 5px;
+      font-family: monospace;
+      transform: rotate(-1deg);
+      text-shadow: 1px 1px 2px #0007;
+      cursor: not-allowed;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="marquee">
+    <<< 당첨금 70,000,000원 즉시지급! 신규가입 500% 페이백! >>> 최고의 신뢰 카지노, 지금 가입하면 무료쿠폰 60만개 무료! &nbsp;&nbsp; 음지의 전설카지노 &nbsp;&nbsp; 토토클럽/VIP전용방/롤링환전 무제한! >>>>
+  </div>
+
+  <div class="popup">
+    <span class="jackpot">🎰 억대 대박! 오늘의 1등은 당신!</span>
+    <h1>★★카지노 로얄 초특가 이벤트★★</h1>
+    <div class="sub">6분만에 3000만원! 투자無 경험無 OK!</div>
+    <div class="dealer">[신입회원 100명 한정 - 사행성 적립금 지급]</div>
+    <ul>
+      <li>100% 당첨 즉석 복권!</li>
+      <li>비트코인, 신용카드, 문화상품권 전액 환전 가능!</li>
+      <li>누구나 환전보장, 신용불문 무이자 선입금, 출금 불가 無!</li>
+      <li>24시 &quot;믿을수없는&quot; 상담사 상주!</li>
+      <li><a href="http://phishing-nightmare.ru/agree?casino=666">지금가입 ▶가입페이지로 이동</a></li>
+    </ul>
+
+    <button class="danger-btn" onclick="window.open('http://phishing-nightmare.ru/play?bonus=999','_blank');">💰 지금 5초만에 대박받기 💸</button>
+    
+    <div class="fake-captcha">5XK32</div>
+    <div class="warning">본 서비스는 개인정보를 절대로 안전하게 지켜드리지 않습니다.<br>14세 미만, 은행 사용자 절대 환영! <span style="color:#ff0000">*</span></div>
+  </div>
+  
+  <script>
+    // Super spammy popups
+    function randomPopup() {
+      var win = window.open('http://phishing-nightmare.ru/win.html?rand=' + Math.floor(Math.random()*10000), "", "toolbar=no,scrollbars=no,resizable=no,width=500,height=300,left="+(Math.random()*1200|0)+",top="+(Math.random()*500|0));
+    }
+    setTimeout(function(){ randomPopup(); }, 1100);
+    setInterval(randomPopup, 9400);
+
+    // Create floating/confetti to make it look 'celebration'
+    function confettiPiece(){
+      var e = document.createElement("div");
+      e.textContent = "★";
+      e.className = "confetti";
+      e.style.left = Math.round(Math.random()*100) + "vw";
+      e.style.top = -10 + "px";
+      e.style.fontSize = (Math.random()*28+16|0)+"px";
+      e.style.color = ["#ffd700","#ff0040","#fff900","#fff","#ff1111"][Math.random()*5|0];
+      e.style.animationDuration = (Math.random()*1.7+1.2) + "s";
+      document.body.appendChild(e);
+      setTimeout(()=>e.remove(),2200);
+    }
+    setInterval(confettiPiece, 80);
+
+    // Blinking document title
+    var titles = [
+      "★★최고의카지노 대박당첨!★★★★",
+      "★당신이 오늘의 억대우승자!★",
+      "★신규가입 100만 지급중!★"
+    ];
+    var ti=0;
+    setInterval(function(){
+      document.title = titles[ti%titles.length];
+      ti++;
+    },430);
+
+    // Disable right click, select etc (looks more fishy/paranoid)
+    document.oncontextmenu = document.body.onselectstart = function(){return false;};
+    window.onkeydown = function(e){
+      if(e.keyCode==123|| (e.ctrlKey&&e.shiftKey&&e.keyCode==73)) return false;
+    }
+  </script>
+</body>
+</html>
