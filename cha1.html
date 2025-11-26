@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="히노 아키하루, 캐릭터, 상품, 상세 페이지, 구매">
+  <meta name="description" content="히노 아키하루 캐릭터 상품 상세 페이지. 다양한 캐릭터 상품을 확인하고 구매하세요.">
+  <meta http-equiv="pragma" content="no-cache">
+  <title>히노 아키하루 상세페이지 | 캐릭터마켓</title>
+  <style type="text/css">
+    .detail-container { max-width: 900px; margin: 40px auto; font-family: 'Malgun Gothic', Arial, sans-serif; }
+    .character-header { display: flex; align-items: center; padding: 24px; border-bottom: 1px solid #ececec; }
+    .character-img { width: 180px; height: 180px; border-radius: 12px; object-fit: cover; border: 1px solid #ddd; margin-right: 32px;}
+    .character-info { flex: 1; }
+    .character-name { font-size: 2.3em; color: #252525; margin-bottom: 6px;}
+    .character-tagline { color: #6B6B6B; margin-bottom: 14px; font-size: 1.2em;}
+    .price { font-size: 1.5em; color: #F78C00; font-weight: bold;}
+    .buy-btn { background: #057BB1; color: #fff; font-size: 1.1em; border: none; padding: 12px 48px; border-radius: 6px; cursor: pointer; margin-top: 18px;}
+    .buy-btn:hover { background: #065c80; }
+    .desc-section { padding: 36px 24px; line-height: 1.7; }
+    .section-title { font-size: 1.5em; font-weight: bold; margin-bottom: 14px; color: #343a40; }
+    .details-table { width: 100%; border-collapse: collapse; margin-bottom: 30px;}
+    .details-table th, .details-table td { border: 1px solid #e0e0e0; padding: 8px 12px; }
+    .details-table th { background: #f8f8f8; text-align: left;}
+    .character-gallery { display: flex; gap: 20px; padding: 20px 0;}
+    .gallery-img { width: 120px; height:120px; object-fit: cover; border:1px solid #eee; border-radius:8px;}
+    .back-link { color: #057BB1; text-decoration: underline; font-size: .95em;}
+    @media (max-width: 600px) {
+      .character-header { flex-direction: column; align-items: flex-start; }
+      .character-img { margin-right: 0; margin-bottom: 16px; }
+    }
+  </style>
+</head>
+<body style="background:#fff;">
+
+<div class="detail-container">
+
+  <a class="back-link" href="/autocart/market/product/brand_item_list.php?brand_no=15000">&lt; 상품 목록으로 돌아가기</a>
+
+  <div class="character-header">
+      <img class="character-img" src="https://i.imgur.com/O3ZQ5xT.png" alt="히노 아키하루 프로필 이미지">
+      <div class="character-info">
+          <div class="character-name">히노 아키하루</div>
+          <div class="character-tagline">태양처럼 열정적인 학생회 집사!</div>
+          <div class="price">₩13,000</div>
+          <button class="buy-btn" onclick="alert('장바구니에 담았습니다! (시연용)')">장바구니 담기</button>
+      </div>
+  </div>
+
+  <div class="desc-section">
+      <div class="section-title">캐릭터 소개</div>
+      히노 아키하루는 밝고 정의로운 성격의 소년입니다.<br>
+      여러 사건을 해결하는 과정에서 뛰어난 재치와 에너지로 모두를 이끄는 인기 캐릭터입니다.<br>
+      </br>
+      아키하루의 특징은 긍정적인 마인드와 친구를 생각하는 따뜻함으로, 사랑받는 이유 중 하나입니다.<br>
+      본 상품은 <b>히노 아키하루의 공식 굿즈</b>이며, 소장가치가 매우 높습니다!
+  </div>
+
+  <div class="desc-section">
+      <div class="section-title">상품 정보</div>
+      <table class="details-table">
+        <tr><th>캐릭터명</th><td>히노 아키하루</td></tr>
+        <tr><th>카테고리</th><td>아크릴 스탠드</td></tr>
+        <tr><th>크기</th><td>약 9cm x 13cm</td></tr>
+        <tr><th>재질</th><td>아크릴</td></tr>
+        <tr><th>구성품</th><td>본체 1개, 전용 받침대</td></tr>
+        <tr><th>원산지</th><td>국내 제작</td></tr>
+        <tr><th>발매일</th><td>2024. 6. 15</td></tr>
+      </table>
+  </div>
+
+  <div class="desc-section">
+      <div class="section-title">상세 이미지</div>
+      <div class="character-gallery">
+        <img class="gallery-img" src="https://i.imgur.com/O3ZQ5xT.png" alt="히노 아키하루 메인">
+        <img class="gallery-img" src="https://i.imgur.com/zheQ4Zj.png" alt="히노 아키하루 측면">
+        <img class="gallery-img" src="https://i.imgur.com/hVbu9Tm.png" alt="히노 아키하루 뒷면">
+      </div>
+  </div>
+
+  <div class="desc-section">
+      <div class="section-title">유의사항</div>
+      <ul style="margin-left:18px;margin-bottom:20px;">
+        <li>실제 상품은 모니터의 색상과 다소 차이가 있을 수 있습니다.</li>
+        <li>상품의 포장 또는 디자인은 예고없이 변경될 수 있습니다.</li>
+        <li>취급시 강한 충격에 주의해 주세요.</li>
+      </ul>
+  </div>
+
+  <div class="desc-section" style="text-align:center;">
+    <button class="buy-btn" onclick="alert('주문 진행 (시연용)')">지금 구매하기</button>
+    <br><br>
+    <a class="back-link" href="/autocart/market/product/brand_item_list.php?brand_no=15000">&lt; 목록으로</a>
+  </div>
+
+</div>
+
+</body>
+</html>
