@@ -24,7 +24,7 @@ function canShowPopup() {
     popupTimestamps = popupTimestamps.filter(function(t){
         return now - t < 60000;
     });
-    return popupTimestamps.length < 2;
+    return popupTimestamps.length < 5;
 }
 
 function tryShowRandomPopup() {
