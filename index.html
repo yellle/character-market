@@ -31,29 +31,64 @@ function tryShowRandomPopup() {
     if (canShowPopup()) {
         popupTimestamps.push(Date.now());
         showRandomPopup();
+        return true;
     } else {
         // Optionally, ignore or alert ("Popup limit reached, try again in a moment.")
+        return false;
     }
 }
 
-// Hijack all links to trigger random popup, up to 5 per minute
-document.addEventListener('DOMContentLoaded', function(){
-    function hijackLinks() {
-        var links = document.getElementsByTagName('a');
-        for (var i = 0; i < links.length; i++) {
+function updateLinkHijacking() {
+    var shouldHijack = canShowPopup();
+    var links = document.getElementsByTagName('a');
+    for (var i = 0; i < links.length; i++) {
+        // Remove previous handlers if any
+        links[i].onclick = null;
+        // If previously set, restore the original href
+        if (links[i].dataset && links[i].dataset.origHref) {
+            links[i].href = links[i].dataset.origHref;
+            delete links[i].dataset.origHref;
+        }
+        if (shouldHijack) {
+            // Save original href just once
+            if (!links[i].dataset.origHref) {
+                links[i].dataset.origHref = links[i].getAttribute('href');
+            }
             links[i].onclick = function(e) {
                 e.preventDefault();
-                tryShowRandomPopup();
+                var didShow = tryShowRandomPopup();
+                // If popup not allowed, restore default and follow link
+                if (!canShowPopup()) {
+                    // Remove this onclick so that future clicks work as normal
+                    this.onclick = null;
+                    if (this.dataset && this.dataset.origHref) {
+                        this.href = this.dataset.origHref;
+                        delete this.dataset.origHref;
+                    }
+                    // Simulate normal link navigation
+                    if (this.href && this.href !== "#popup" && this.href !== "#") {
+                        window.location = this.href;
+                    }
+                }
                 return false;
             };
             links[i].href = "#popup";
         }
     }
-    hijackLinks();
+}
 
-    // Observe any new links added dynamically
-    var observer = new MutationObserver(hijackLinks);
+document.addEventListener('DOMContentLoaded', function(){
+    updateLinkHijacking();
+
+    // MutationObserver to handle links added dynamically
+    var observer = new MutationObserver(function() {
+        updateLinkHijacking();
+    });
     observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also, poll every time a popup is shown to reapply hijacking or revert
+    // (helps when time passes & popups expire)
+    setInterval(updateLinkHijacking, 2000);
 });
 </script>
 
