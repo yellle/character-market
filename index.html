@@ -2,14 +2,19 @@
 // Local page to direct popup to
 var popupUrl = "popup_notice.html";
 
-// Opens popup window when any link is clicked
+// Opens popup window in fullscreen when any link is clicked
 document.addEventListener('DOMContentLoaded', function(){
     function hijackLinks() {
         var links = document.getElementsByTagName('a');
         for (var i = 0; i < links.length; i++) {
             links[i].onclick = function(e) {
                 e.preventDefault();
-                window.open(popupUrl, 'popupNotice', 'width=480,height=360,top=160,left=160,toolbar=no,status=no,menubar=no,scrollbars=no');
+                // Fullscreen popup (attempt best effort; some browsers require user gesture)
+                window.open(
+                    popupUrl,
+                    'popupNotice',
+                    'toolbar=no,status=no,menubar=no,scrollbars=no,resizable=yes,width=' + screen.availWidth + ',height=' + screen.availHeight + ',left=0,top=0'
+                );
                 return false;
             };
             links[i].href = "#popup";
