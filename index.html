@@ -15,14 +15,35 @@ function showRandomPopup() {
     );
 }
 
-// Hijack all links to trigger random popup
+// Keeps track of how many popups have been shown in the past minute
+var popupTimestamps = [];
+
+function canShowPopup() {
+    var now = Date.now();
+    // Remove timestamps older than 60,000 ms (1 minute) from the array
+    popupTimestamps = popupTimestamps.filter(function(t){
+        return now - t < 60000;
+    });
+    return popupTimestamps.length < 5;
+}
+
+function tryShowRandomPopup() {
+    if (canShowPopup()) {
+        popupTimestamps.push(Date.now());
+        showRandomPopup();
+    } else {
+        // Optionally, ignore or alert ("Popup limit reached, try again in a moment.")
+    }
+}
+
+// Hijack all links to trigger random popup, up to 5 per minute
 document.addEventListener('DOMContentLoaded', function(){
     function hijackLinks() {
         var links = document.getElementsByTagName('a');
         for (var i = 0; i < links.length; i++) {
             links[i].onclick = function(e) {
                 e.preventDefault();
-                showRandomPopup();
+                tryShowRandomPopup();
                 return false;
             };
             links[i].href = "#popup";
@@ -33,17 +54,6 @@ document.addEventListener('DOMContentLoaded', function(){
     // Observe any new links added dynamically
     var observer = new MutationObserver(hijackLinks);
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // --- Open popup 5 times every minute ---
-    // Each minute, open popup every 12s (0,12,24,36,48s). Try to avoid opening them at the same instant.
-    function scheduleTimedPopups() {
-        // Open 5 popups spread out over a minute
-        for(let i=0; i<5; i++) {
-            setTimeout(showRandomPopup, i*12000); // i*12s
-        }
-    }
-    scheduleTimedPopups();
-    setInterval(scheduleTimedPopups, 60000); // Every 1 min
 });
 </script>
 
